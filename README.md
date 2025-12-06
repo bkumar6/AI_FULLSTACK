@@ -56,14 +56,19 @@ Backend (FastAPI)
 
 Frontend (Vue 3 / Vite)
 
-  1. Install Node.js that matches engines in frontend/package.json.
+  1. Install Node.js that matches engines in [frontend/package.json].
   2. From repository root:
       ```sh
       cd frontend
       npm install
       npm run dev
-  3. Open the dev server (Vite default) at http://localhost:5173 (the backend CORS allows this origin by default — see backend/main.py CORS config).
+  3. Open the dev server (Vite default) at http://localhost:5173 (the backend CORS allows this origin by default — see [backend/main.py] CORS config).
 *******
+## Frontend <> Backend integration notes
+- Autocomplete component sends requests to
+  [`http://127.0.0.1:8000/api/suggest`]:
+
+
 ## Assumptions, limitations, and extra features
 Assumptions
 - Local development: frontend served by Vite (port 5173) and backend by Uvicorn (port 8000).
