@@ -40,3 +40,6 @@ Backend (FastAPI)
    python -m venv .venv
    source .venv/bin/activate  # macOS / Linux
    .venv\Scripts\activate     # Windows
+2. Install dependencies:
+    ```sh
+    pip install fastapi uvicorn sqlmodel python-dotenv passlib python-jose google-genai
