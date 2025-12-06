@@ -80,35 +80,35 @@ Frontend (Vue 3 / Vite)
 Assumptions
 - Local development: frontend served by Vite (port 5173) and backend by Uvicorn (port 8000).
 - Gemini API key is valid and has access to the chosen model.
-- No production-grade DB migrations — SQLite file database.db is used (created automatically by backend/main.py).
+- No production-grade DB migrations — SQLite file `database.db` is used (created automatically by [backend/main.py]).
 
 Limitations
 
-- JWT secret is hard-coded in backend/main.py and must be replaced for production.
+- JWT secret is hard-coded in [backend/main.py] and must be replaced for production.
 - No HTTPS in local dev.
 - No rate limiting or advanced error retry logic for the GenAI API.
-- Minimal authorization model: users may only edit/delete their own account (enforced in backend/main.py and UI logic in frontend/src/views/UsersListView.vue).
+- Minimal authorization model: users may only edit/delete their own account (enforced in [backend/main.py] and UI logic in [frontend/src/views/UsersListView.vue]).
 
 Extra / Helpful features implemented
 
-- Protected routes and helper fetchProtected in useAuth.
-- Password hashing (PBKDF2_SHA256) with passlib in backend/main.py.
+- Protected routes and helper `fetchProtected` in [`useAuth`](frontend/composables/useAuth.js).
+- Password hashing (PBKDF2_SHA256) with passlib in [backend/main.py].
 ********
 Important files / entry points (quick links)
 
-- Backend main: backend/main.py — server, AI client, auth, endpoints
-  - Chat endpoint: process_chat_request
-  - Suggest endpoint: get_suggestions
-  - Auth endpoints: signup, login_for_access_token
-  - Protected user endpoints: read_users, update_user, delete_user
-  - AI client and config: see client and MODEL_NAME
-- Backend env: backend/.env
-- Frontend app: frontend/package.json
-- Autocomplete: frontend/src/components/AutocompleteInput.vue
-- Chat UI: frontend/src/views/ChatView.vue
-- Auth composable: frontend/src/composables/useAuth.js
-- Debounce composable: frontend/src/composables/useDebounce.js
-- Router and guards: frontend/src/router/index.js
-- Router and guards: frontend/src/router/index.js
-- Users list (protected UI): frontend/src/views/UsersListView.vue
+- Backend main: [backend/main.py] — server, AI client, auth, endpoints
+  - Chat endpoint: [`process_chat_request`](backend/main.py)
+  - Suggest endpoint: [`get_suggestions`](backend/main.py)
+  - Auth endpoints: signup, [`login_for_access_token`](backend/main.py)
+  - Protected user endpoints: [`read_users`](backend/main.py), [`update_user`](backend/main.py), [`delete_user`](backend/main.py)
+  - AI client and config: see [`client`](backend/main.py) and [`MODEL_NAME`](backend/main.py)
+- Backend env: [backend/.env]
+- Frontend app: [frontend/package.json]
+- Autocomplete: [frontend/src/components/AutocompleteInput.vue]
+- Chat UI: [frontend/src/views/ChatView.vue]
+- Auth composable: [frontend/src/composables/useAuth.js]
+- Debounce composable: [frontend/src/composables/useDebounce.js]
+- Router and guards: [frontend/src/router/index.js]
+- Router and guards: [frontend/src/router/index.js]
+- Users list (protected UI): [frontend/src/views/UsersListView.vue]
 *********
