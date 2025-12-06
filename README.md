@@ -66,9 +66,16 @@ Frontend (Vue 3 / Vite)
 *******
 ## Frontend <> Backend integration notes
 - Autocomplete component sends requests to
-  [`http://127.0.0.1:8000/api/suggest`]:
-
-
+  `http://127.0.0.1:8000/api/suggest`:
+  - See [frontend/src/components/AutocompleteInput.vue].
+  - Debounce helper: [`useDebounce`](frontend/composables/useDebounce.js).
+- Chat UI posts messages to `http://127.0.0.1:8000/api/chat`:
+  - See [frontend/src/views/ChatView.vue].
+- Authentication:
+  - Client-side auth helpers are in [`useAuth`](frontend/composables/useAuth.js). Token and user info are stored in localStorage and used by `fetchProtected` for protected API calls.
+  - Login endpoint expects form-encoded data (FastAPI's OAuth2 form) — implemented in [`useAuth`](frontend/composables/useAuth.js) and [`login_for_access_token`](backend/main.py).
+  - Router enforces protected routes via the guard in [frontend/src/router/index.js].
+*********
 ## Assumptions, limitations, and extra features
 Assumptions
 - Local development: frontend served by Vite (port 5173) and backend by Uvicorn (port 8000).
