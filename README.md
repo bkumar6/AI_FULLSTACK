@@ -49,10 +49,10 @@ Backend (FastAPI)
     cd backend
     uvicorn main:app --reload --host 127.0.0.1 --port 8000
 - The backend exposes endpoints the frontend expects:
-  - Chat: POST/api/chat handled by [process_chat_requests](backend/main.py)
-  - Autocomplete: GET /api/suggest handled by [get_suggestions](backend/main.py)
-  - Signup/Login: POST /auth/signup and POST /auth/login handled by [signup](backend/main.py) and [login_for_access_token](backend/main.py)
-  - Protected users: GET/PUT/DELETE /api/users handled by [read_users](backend/main.py), [update_user](backend/main.py), [delete_user](backend/main.py)
+  - Chat: POST/api/chat handled by [`process_chat_requests`](backend/main.py)
+  - Autocomplete: GET /api/suggest handled by [`get_suggestions`](backend/main.py)
+  - Signup/Login: POST /auth/signup and POST /auth/login handled by [`signup`](backend/main.py) and [`login_for_access_token`](backend/main.py)
+  - Protected users: GET/PUT/DELETE /api/users handled by [`read_users`](backend/main.py), [`update_user`](backend/main.py), [`delete_user`](backend/main.py)
 
 Frontend (Vue 3 / Vite)
 
