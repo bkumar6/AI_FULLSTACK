@@ -43,3 +43,60 @@ Backend (FastAPI)
 2. Install dependencies:
     ```sh
     pip install fastapi uvicorn sqlmodel python-dotenv passlib python-jose google-genai
+3. Configure your Gemini API key in backend/.env or in your environment.
+4. Run th backend:
+    ```sh
+    cd backend
+    uvicorn main:app --reload --host 127.0.0.1 --port 8000
+- The backend exposes endpoints the frontend expects:
+  - Chat: POST/api/chat handled by process_chat_requests
+  - Autocomplete: GET /api/suggest handled by get_suggestions
+  - Signup/Login: POST /auth/signup and POST /auth/login handled by signup and login_for_access_token
+  - Protected users: GET/PUT/DELETE /api/users handled by read_users, update_user, delete_user
+
+Frontnd (Vue 3 / Vite)
+
+  1. Install Node.js that matches engines in frontend/package.json.
+  2. From repository root:
+      ```sh
+      cd frontend
+      npm install
+      npm run dev
+  3. Open the dev server (Vite default) at http://localhost:5173 (the backend CORS allows this origin by default — see backend/main.py CORS config).
+*******
+## Assumptions, limitations, and extra features
+Assumptions
+- Local development: frontend served by Vite (port 5173) and backend by Uvicorn (port 8000).
+- Gemini API key is valid and has access to the chosen model.
+- No production-grade DB migrations — SQLite file database.db is used (created automatically by backend/main.py).
+
+Limitations
+
+- JWT secret is hard-coded in backend/main.py and must be replaced for production.
+- No HTTPS in local dev.
+- No rate limiting or advanced error retry logic for the GenAI API.
+- Minimal authorization model: users may only edit/delete their own account (enforced in backend/main.py and UI logic in frontend/src/views/UsersListView.vue).
+
+Extra / Helpful features implemented
+
+- Protected routes and helper fetchProtected in useAuth.
+- Password hashing (PBKDF2_SHA256) with passlib in backend/main.py.
+********
+Important files / entry points (quick links)
+
+- Backend main: backend/main.py — server, AI client, auth, endpoints
+  - Chat endpoint: process_chat_request
+  - Suggest endpoint: get_suggestions
+  - Auth endpoints: signup, login_for_access_token
+  - Protected user endpoints: read_users, update_user, delete_user
+  - AI client and config: see client and MODEL_NAME
+- Backend env: backend/.env
+- Frontend app: frontend/package.json
+- Autocomplete: frontend/src/components/AutocompleteInput.vue
+- Chat UI: frontend/src/views/ChatView.vue
+- Auth composable: frontend/src/composables/useAuth.js
+- Debounce composable: frontend/src/composables/useDebounce.js
+- Router and guards: frontend/src/router/index.js
+- Router and guards: frontend/src/router/index.js
+- Users list (protected UI): frontend/src/views/UsersListView.vue
+*********
