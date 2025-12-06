@@ -43,18 +43,18 @@ Backend (FastAPI)
 2. Install dependencies:
     ```sh
     pip install fastapi uvicorn sqlmodel python-dotenv passlib python-jose google-genai
-3. Configure your Gemini API key in backend/.env or in your environment.
+3. Configure your Gemini API key in (backend/.env) or in your environment.
 4. Run the backend:
     ```sh
     cd backend
     uvicorn main:app --reload --host 127.0.0.1 --port 8000
 - The backend exposes endpoints the frontend expects:
-  - Chat: POST/api/chat handled by process_chat_requests
-  - Autocomplete: GET /api/suggest handled by get_suggestions
-  - Signup/Login: POST /auth/signup and POST /auth/login handled by signup and login_for_access_token
-  - Protected users: GET/PUT/DELETE /api/users handled by read_users, update_user, delete_user
+  - Chat: POST/api/chat handled by [process_chat_requests](backend/main.py)
+  - Autocomplete: GET /api/suggest handled by [get_suggestions](backend/main.py)
+  - Signup/Login: POST /auth/signup and POST /auth/login handled by [signup](backend/main.py) and [login_for_access_token](backend/main.py)
+  - Protected users: GET/PUT/DELETE /api/users handled by [read_users](backend/main.py), [update_user](backend/main.py), [delete_user](backend/main.py)
 
-Frontnd (Vue 3 / Vite)
+Frontend (Vue 3 / Vite)
 
   1. Install Node.js that matches engines in frontend/package.json.
   2. From repository root:
