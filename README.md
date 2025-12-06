@@ -44,7 +44,7 @@ Backend (FastAPI)
     ```sh
     pip install fastapi uvicorn sqlmodel python-dotenv passlib python-jose google-genai
 3. Configure your Gemini API key in backend/.env or in your environment.
-4. Run th backend:
+4. Run the backend:
     ```sh
     cd backend
     uvicorn main:app --reload --host 127.0.0.1 --port 8000
