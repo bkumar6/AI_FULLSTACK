@@ -27,7 +27,7 @@ export function useAuth() {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded' // CRITICAL header change
+                    'Content-Type': 'application/x-www-form-urlencoded' 
                 },
                 body: formData
             });
@@ -65,7 +65,7 @@ export function useAuth() {
         localStorage.removeItem('user_email');
     };
     
-    // --- Data Fetching Helper (For Protected Routes) ---
+    // --- Data Fetching Helper ---
     
     const fetchProtected = async (endpoint, method = 'GET', body = null) => {
         const url = `${API_BASE_URL}${endpoint}`;

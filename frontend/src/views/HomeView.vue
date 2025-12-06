@@ -1,14 +1,3 @@
-<!-- <script setup>
-import AutocompleteInput from '../components/AutocompleteInput.vue';
-</script>
-
-<template>
-  <main>
-    <h1>Full-Stack AI Application</h1>
-    <AutocompleteInput />
-  </main>
-</template> -->
-
 <script setup>
 import { ref } from 'vue';
 import { useDebounce } from '../composables/useDebounce'; 
@@ -48,7 +37,7 @@ const fetchSuggestions = async (searchTerm) => {
     }
 };
 
-// --- INPUT & DEBOUNCE HANDLER (The Fix) ---
+// --- INPUT & DEBOUNCE HANDLER ---
 const handleInput = (event) => {
     // 1. Manually update the reactive variable
     query.value = event.target.value; 
@@ -100,7 +89,6 @@ const handleBlur = () => {
 </template>
 
 <style scoped>
-/* 🎯 ALL STYLES ARE CORRECTLY PLACED OUTSIDE <template> */
 
 .autocomplete-wrapper {
     max-width: 500px;

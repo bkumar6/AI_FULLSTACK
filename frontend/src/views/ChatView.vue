@@ -6,7 +6,7 @@ const messages = ref([]);
 const currentPrompt = ref('');
 const isLoading = ref(false);
 
-const API_URL = 'http://127.0.0.1:8000/api/chat'; // <-- Your FastAPI Backend URL
+const API_URL = 'http://127.0.0.1:8000/api/chat';
 
 const sendMessage = async () => {
     const prompt = currentPrompt.value.trim();
@@ -32,7 +32,7 @@ const sendMessage = async () => {
             body: JSON.stringify({ prompt: prompt })
         });
 
-        // Check for HTTP errors (e.g., 500, 400)
+        // Check for HTTP errors
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
@@ -98,7 +98,6 @@ const sendMessage = async () => {
 </template>
 
 <style scoped>
-/* Basic styling for the chat UI */
 .chat-container {
     max-width: 600px;
     margin: 40px auto;
@@ -189,23 +188,22 @@ const sendMessage = async () => {
     cursor: not-allowed;
 }
 
-/* Add this new styling block */
+
 .message.error {
-    justify-content: center; /* Center the error message */
+    justify-content: center;
     margin-top: 20px;
 }
 
 .error .sender-tag {
-    /* Hide the sender tag for a centered system error */
     display: none; 
 }
 
 .error .message-text {
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24;             /* Dark red text */
+    background-color: #f8d7da; 
+    color: #721c24;             
     padding: 8px 15px;
     border-radius: 8px;
-    font-weight: bold; /* Make it stand out */
+    font-weight: bold; 
     text-align: center;
     max-width: 90%;
 }

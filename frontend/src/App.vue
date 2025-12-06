@@ -9,13 +9,11 @@ const { isAuthenticated, userEmail, logout } = useAuth();
     <header class="header">
         <div class="wrapper">
             <nav class="nav">
-                <!-- LEFT LINKS -->
                 <div class="left-links">
                     <RouterLink to="/">Home</RouterLink>
                     <RouterLink to="/chat">Chatbot</RouterLink>
                 </div>
 
-                <!-- RIGHT LINKS -->
                 <div class="right-links">
                     <template v-if="!isAuthenticated">
                         <RouterLink to="/signup">Sign Up</RouterLink>

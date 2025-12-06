@@ -68,7 +68,6 @@ const submitLogin = async () => {
 </template>
 
 <style scoped>
-/* Reuse styles from SignupView.vue for consistency */
 .auth-container {
     max-width: 400px;
     margin: 60px auto;

@@ -38,7 +38,7 @@ const router = createRouter({
   ]
 })
 
-// --- Navigation Guard Implementation (Objective 3.3 Protection) ---
+// --- Navigation Guard Implementation ---
 router.beforeEach((to, from, next) => {
     const { isAuthenticated } = useAuth();
     

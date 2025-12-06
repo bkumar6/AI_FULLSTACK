@@ -9,7 +9,7 @@ const isFetching = ref(false);
 const API_URL = 'http://127.0.0.1:8000/api/suggest';
 const { debounce } = useDebounce(400);
 
-// Fetch Suggestions -----------------------------------
+// Fetch Suggestions 
 const fetchSuggestions = async (searchTerm) => {
     console.log("🔻 fetchSuggestions() called with:", searchTerm);
 
@@ -44,23 +44,6 @@ const fetchSuggestions = async (searchTerm) => {
     }
 };
 
-// Watch Input -----------------------------------------
-// watch(query, (newQuery) => {
-//     console.log("🔹 Watcher triggered:", newQuery);
-//     // console.log("Input changed. New value:", newQuery); // Redundant line removed
-
-//     // 🎯 CRITICAL CHANGE HERE: The debounce function should execute fetchSuggestions 
-//     // using the LATEST value of the reactive 'query' ref, not the potentially stale 'newQuery' argument.
-//     // However, since we are only passing a callback to debounce, we need to ensure the correct 
-//     // argument (newQuery) is captured or we reference the reactive 'query.value'.
-    
-//     // Efficient fix is to pass the callback function which encapsulates the newQuery:
-//     debounce(() => {
-//         console.log("🟢 Debounce fired for:", newQuery);
-//         fetchSuggestions(newQuery); 
-//     });
-// });
-
 
 const handleInput = (event) => {
     // 1. Update the reactive variable manually
@@ -77,7 +60,7 @@ const handleInput = (event) => {
 };
 
 
-// When selecting suggestion ----------------------------
+// When selecting suggestion
 const selectSuggestion = (suggestion) => {
     console.log("🎯 Selected suggestion:", suggestion);
     query.value = suggestion;

@@ -152,7 +152,6 @@ onMounted(() => {
         </table>
     </div>
 
-    <!-- Edit Modal (Simplified inline form for demo) -->
     <div v-if="editingUser" class="modal-overlay">
         <div class="modal-content">
             <h2>Edit User {{ editingUser.name }}</h2>

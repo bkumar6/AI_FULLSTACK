@@ -144,7 +144,7 @@ app.add_middleware(
 )
 
 
-# --- 🎯 Objective 1: Chatbot Integration Endpoint ---
+# --- Chatbot Integration Endpoint ---
 
 @app.post("/api/chat")
 async def process_chat_request(request: ChatRequest):
@@ -161,7 +161,7 @@ async def process_chat_request(request: ChatRequest):
         raise HTTPException(status_code=500, detail="Gemini API request failed.")
 
 
-# --- 🎯 Objective 2: Autocomplete Endpoint ---
+# --- Autocomplete Endpoint ---
 
 @app.get("/api/suggest")
 async def get_suggestions(query: str = None):
@@ -193,7 +193,7 @@ async def get_suggestions(query: str = None):
         raise HTTPException(status_code=500, detail="Unexpected error")
 
 
-# --- 🎯 Objective 3.1: Signup Endpoint ---
+# --- Signup Endpoint ---
 @app.post("/auth/signup", response_model=UserRead, status_code=status.HTTP_201_CREATED)
 def signup(user_data: UserCreate, session: Session = Depends(get_session)):
     """Creates a new user, hashes the password, and stores them in the database."""
@@ -219,7 +219,7 @@ def signup(user_data: UserCreate, session: Session = Depends(get_session)):
     return db_user
 
 
-# --- 🎯 Objective 3.2: Login Endpoint ---
+# --- Login Endpoint ---
 @app.post("/auth/login")
 def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()], 
@@ -243,7 +243,7 @@ def login_for_access_token(
     return {"access_token": access_token, "token_type": "bearer", "user_id": user.id, "email": user.email}
 
 
-# --- 🎯 Objective 3.3: Protected Users List (Read) ---
+# --- Protected Users List ---
 
 @app.get("/api/users", response_model=list[UserRead])
 def read_users(
@@ -258,7 +258,7 @@ def read_users(
     return users
 
 
-# --- 🎯 Objective 3.3: Protected User Update (Edit) ---
+# --- Protected User Update ---
 
 @app.put("/api/users/{user_id}", response_model=UserRead)
 def update_user(
@@ -284,7 +284,7 @@ def update_user(
     return db_user
 
 
-# --- 🎯 Objective 3.3: Protected User Delete (Delete) ---
+# --- Protected User Delete ---
 
 @app.delete("/api/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(
