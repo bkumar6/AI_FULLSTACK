@@ -1,4 +1,4 @@
-# AI_FULLSTACK
+# AI-POWERED-FULL-STACK-APPLICATION
 
 ## Project Overview
 
